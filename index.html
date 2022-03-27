@@ -1,12 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <title>Terraforming Mars: Ares Expedition Cards</title>
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./card.css">
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
             background: #333;
+            display: grid;
+            grid-template-rows: auto 30px;
+            height: 100%;
+            padding: 80px 60px 0;
         }
 
         .app {
@@ -78,6 +87,18 @@
         .hidden {
             display: none;
         }
+
+        footer {
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        footer > a,
+        footer > a:link,
+        footer > a:visited {
+            color: #ddd;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +120,12 @@
         <div id="reducetemp" class="hidden"></div>
     </div>
 </div>
+
+<footer>
+    This page &copy;2022 by <a href="https://github.com/mekane/tm-ares-cards">Marty Kane</a>. Terraforming Mars: Ares
+    Expedition is &copy; <a href="https://strongholdgames.com/">Stronghold Games</a>. This site is not affiliated with
+    Stronghold games, I'm just a fan.
+</footer>
 </body>
 <script>
     let o2Level = 0;
