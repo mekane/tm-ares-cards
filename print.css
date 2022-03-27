@@ -1,0 +1,11 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 11in;
+    margin: 0.5in;
+    width: 8.5in;
+}
+
+@page {
+    margin: 0;
+}

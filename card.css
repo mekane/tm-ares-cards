@@ -1,0 +1,44 @@
+.card {
+    border: 2px solid #333;
+    border-radius: 0.125in;
+    box-sizing: border-box;
+    font-size: .375in;
+    height: 2.5in;
+    padding: 0.5in 0 0.5in;
+    position: relative;
+    text-align: center;
+    width: 1.625in;
+}
+
+.level {
+    display: block;
+    font-size: .25in;
+    margin-top: 0.725in;
+}
+
+.purple:before,
+.red:before,
+.yellow:before,
+.white:before {
+    border: .125in solid white;
+    border-radius: 0.1in;
+    bottom: 0;
+    content: " ";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.purple:before {
+    border-color: purple;
+}
+
+.red:before {
+    border-color: red;
+}
+
+.yellow:before {
+    border-color: yellow;
+}
