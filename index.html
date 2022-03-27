@@ -1,10 +1,189 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Terraforming Mars: Ares Expedition Cards</title>
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./card.css">
-  </head>
-  <body>
-  </body>
+    <style>
+        body {
+            background: #333;
+        }
+
+        .app {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            justify-content: center;
+            justify-items: center;
+            min-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+            width: 50%;
+        }
+
+        .card {
+            background: #222;
+            cursor: pointer;
+            margin: 0 auto 0;
+        }
+
+        .card > .level {
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 32px;
+        }
+
+        .card.purple {
+            box-shadow: 0 0 24px 2px purple;
+            color: #d0f;
+        }
+
+        .card.red {
+            box-shadow: 0 0 24px 2px red;
+            color: #f00;
+        }
+
+        .card.yellow {
+            box-shadow: 0 0 24px 2px yellow;
+            color: yellow;
+        }
+
+        .card.white {
+            box-shadow: 0 0 24px 2px white;
+            color: white;
+        }
+
+        .oxygen,
+        .temperature {
+            width: 50%;
+        }
+
+        header {
+            color: white;
+            font-size: 1.85rem;
+            margin-bottom: 1rem;
+        }
+
+        #reduceo2,
+        #reducetemp {
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-top: 80px solid #520;
+            cursor: pointer;
+            height: 0;
+            position: relative;
+            margin: 40px auto 0;
+            width: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="oxygen">
+        <header>Oxygen</header>
+        <div class="card" id="o2card">
+            <span class="text">O<sub>2</sub></span>
+            <span class="level"></span>
+        </div>
+        <div id="reduceo2" class="hidden"></div>
+    </div>
+    <div class="temperature">
+        <header>Temperature</header>
+        <div class="card" id="tempcard">
+            <span class="text">Temp</span>
+            <span class="level"></span>
+        </div>
+        <div id="reducetemp" class="hidden"></div>
+    </div>
+</div>
+</body>
+<script>
+    let o2Level = 0;
+    let tempLevel = -30;
+
+    const $o2Card = document.getElementById('o2card');
+    const $tempCard = document.getElementById('tempcard');
+
+    $o2Card.addEventListener('click', increaseO2);
+    $tempCard.addEventListener('click', increaseTemp);
+
+    const $reduceO2 = document.getElementById('reduceo2');
+    const $reduceTemp = document.getElementById('reducetemp');
+
+    $reduceO2.addEventListener('click', decreaseO2);
+    $reduceTemp.addEventListener('click', decreaseTemp);
+
+    function increaseO2() {
+        if (o2Level >= 14)
+            o2Level = 14;
+        else
+            o2Level++;
+        updateCards();
+    }
+
+    function decreaseO2() {
+        if (o2Level <= 0)
+            o2Level = 0;
+        else
+            o2Level--;
+        updateCards();
+    }
+
+    function increaseTemp() {
+        if (tempLevel >= 8)
+            tempLevel = 8;
+        else
+            tempLevel += 2;
+        updateCards();
+    }
+
+    function decreaseTemp() {
+        if (tempLevel <= -30)
+            tempLevel = -30;
+        else
+            tempLevel -= 2;
+        updateCards();
+    }
+
+    function updateCards() {
+        $o2Card.querySelector('.level').textContent = `${o2Level}%`;
+
+        if (o2Level > 11) {
+            $o2Card.className = 'card white';
+        } else if (o2Level > 6) {
+            $o2Card.className = 'card yellow';
+        } else if (o2Level > 2) {
+            $o2Card.className = 'card red';
+        } else {
+            $o2Card.className = 'card purple';
+        }
+
+        if (o2Level <= 0)
+            $reduceO2.classList.add('hidden')
+        else
+            $reduceO2.classList.remove('hidden')
+
+        $tempCard.querySelector('.level').innerHTML = `${tempLevel > 0 ? '+' : ''}${tempLevel}&deg;`;
+
+        if (tempLevel > 0) {
+            $tempCard.className = 'card white';
+        } else if (tempLevel > -10) {
+            $tempCard.className = 'card yellow';
+        } else if (tempLevel > -20) {
+            $tempCard.className = 'card red';
+        } else {
+            $tempCard.className = 'card purple';
+        }
+
+        if (tempLevel <= -30)
+            $reduceTemp.classList.add('hidden')
+        else
+            $reduceTemp.classList.remove('hidden')
+    }
+
+    updateCards();
+</script>
 </html>

@@ -9,3 +9,23 @@ body {
 @page {
     margin: 0;
 }
+
+.card.purple {
+    background-color: #ece;
+    color: purple;
+}
+
+.card.red {
+    background-color: #ecc;
+    color: #c00;
+}
+
+.card.yellow {
+    background-color: #eec;
+    color: #770;
+}
+
+.card.white {
+    background-color: #eee;
+    color: #333;
+}

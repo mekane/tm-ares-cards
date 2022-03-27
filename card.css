@@ -1,4 +1,5 @@
 .card {
+    background: white;
     border: 2px solid #333;
     border-radius: 0.125in;
     box-sizing: border-box;
@@ -12,8 +13,9 @@
 
 .level {
     display: block;
-    font-size: .25in;
-    margin-top: 0.725in;
+    font-weight: bold;
+    font-size: .45in;
+    margin-top: 0.5in;
 }
 
 .purple:before,
@@ -28,7 +30,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: -1;
+    z-index: 1;
 }
 
 .purple:before {
